@@ -23,4 +23,19 @@ var config = {
       MinutesAway: trainMinAway
   })
 
+  // I need to use moment make an on click function that put info in each of these columns.
+  function makeTable() {
+    return `
+  <tr>
+          <th scope="row">This is a test</th>
+          <td>#########</td>
+          <td>#########</td>
+          <td>#########</td>
+          <td>#########</td>
+  `};
+$(document).on("click", "button", function(){
+  event.preventDefault();
+  $('tbody').append(makeTable());
+})
+
   

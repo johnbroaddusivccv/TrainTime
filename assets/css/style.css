@@ -8,10 +8,11 @@ h1 {
 
 h3 {
     font-size: 35px;
-    color: pink;
-    text-align: center;
+    color:whitesmoke;
+    text-align: left;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0%;
+    padding-left: 60px;
 }
 
 body {
@@ -25,6 +26,5 @@ header {
 
 .container {
     background: whitesmoke;
-    height: 350px;
     width: 100%;
 }

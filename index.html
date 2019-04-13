@@ -27,20 +27,70 @@
   </head>
   <body>
     <header><h1>Train Time Sheet</h1></header>
-    <h3>All Aboard!</h3>
-    <div class="container"><table class="table table-responsive">
-            <tr>hello</tr>
-            <tr>there</tr>
-            <tr>how</tr>
-            <tr>are</tr>
-            <tr>you</tr>
-            </table>
-            
-            <table class="table table-sm-responsive"><!-- ... --></table>
-            <table class="table table-md-responsive"><!-- ... --></table>
-            <table class="table table-lg-responsive"><!-- ... --></table>
-            <table class="table table-xl-responsive"><!-- ... --></table>
+    <h3>Current Train Schedule</h3>
+    <div class="container"><table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Train name</th>
+          <th scope="col">Destination</th>
+          <th scope="col">Frequency (min)</th>
+          <th scope="col">Next Arrival</th>
+          <th scope="col">Minutes Away</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>#########</td>
+          <td>#########</td>
+          <td>#########</td>
+          <td>#########</td>
+
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>#########</td>
+          <td>#########</td>
+          <td>#########</td>
+          <td>#########</td>
+
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>#########</td>
+          <td>#########</td>
+          <td>#########</td>
+          <td>#########</td>
+
+        </tr>
+      </tbody>
+    </table>
             </div>
+            <div class="container"><form>
+             
+              <div class="form-group">
+                <label for="inputAddress"><h6>Train Name</h6></label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="Train Name">
+              </div>
+              <div class="form-group">
+                <label for="inputAddress2"><h6>Destination</h6></label>
+                <input type="text" class="form-control" id="inputAddress2" placeholder="Destination">
+              </div>
+              <div class="form-group">
+                <label for="inputAddress"><h6>First Train Time (HH:mm) Miliatry Time</h6></label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="First Train Time">
+              </div>
+              <div class="form-group">
+                <label for="inputAddress2"><h>Frequency</h6></label>
+                <input type="text" class="form-control" id="inputAddress2" placeholder="Frequency">
+              </div>
+              <div class="form-group col-md-2"><button type="submit" class="btn btn-primary">Submit</button>
+
+                
+                </div>
+              </div>
+              
+            </form></div>
 
     <script src="assets/js/script.js"></script>
   </body>
