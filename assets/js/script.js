@@ -16,11 +16,11 @@ var config = {
   var trainMinAway = 0;
 
   database.ref().set({
-      TrainName: trainN,
-      TrainDestination: trainDest,
-      TrainFrequency: trainF,
-      NextArrival: trainArrive,
-      MinutesAway: trainMinAway
+      trainName: trainN,
+      trainDestination: trainDest,
+      trainFrequency: trainF,
+      nextArrival: trainArrive,
+      minutesAway: trainMinAway
   })
 
   // I need to use moment make an on click function that put info in each of these columns.
@@ -36,6 +36,32 @@ var config = {
 $(document).on("click", "button", function(){
   event.preventDefault();
   $('tbody').append(makeTable());
-})
+  trainN = $('#name-input').val().trim();
+  trainDest = $('#destination-input').val().trim();
+  trainF = $('#frequency-input').val().trim();
+  trainArrive = $('#ftt-input').val().trim();
+//.ref().push????
+  database.ref().set({
+    trainName: trainN,
+    trainDestination: trainDest,
+    trainFrequency: trainF,
+    nextArrival: trainArrive,
+  })
+});
+
+// database.on("value", function(snapshot){
+//   // Logging everything coming out of snapshot
+//   console.log(snapshot.val());
+//   console.log(snapshot.val().TrainN);
+//   console.log(snapshot.val().TrainDest);
+//   console.log(snapshot.val().TrainF);
+//   console.log(snapshot.val().TrainArrive);
+//})
+
+
+
+
+
+
 
   
