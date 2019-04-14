@@ -38,16 +38,24 @@ $(document).on("click", "button", function(){
   
   trainN = $('#name-input').val().trim();
   trainDest = $('#destination-input').val().trim();
-  trainF = $('#frequency-input').val();
-  trainArrive = $('#ftt-input').val();
+  trainF = $('#frequency-input').val().trim();
+  trainArrive = $('#ftt-input').val().trim();
 //.ref().push????
+
 $('tbody').append(makeTable());
   database.ref().push({
     trainName: trainN,
     trainDestination: trainDest,
     trainFrequency: trainF,
     nextArrival: trainArrive,
+    dateAdded: firebase.database.ServerValue.TIMESTAMP
+
+    
   })
+
+
+
+
 });
 
 // Real Time Clock
@@ -64,14 +72,20 @@ clock.textContent = humanReadable;
 setInterval(updateTime, 1000);
 updateTime();
 
-// database.on("value", function(snapshot){
+// database.ref().on("value", function(snapshot){
 //   // Logging everything coming out of snapshot
 //   console.log(snapshot.val());
 //   console.log(snapshot.val().TrainN);
 //   console.log(snapshot.val().TrainDest);
 //   console.log(snapshot.val().TrainF);
 //   console.log(snapshot.val().TrainArrive);
-//})
+// })
+  
+
+
+
+
+
 
 
 
