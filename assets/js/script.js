@@ -38,10 +38,10 @@ $(document).on("click", "button", function(){
   $('tbody').append(makeTable());
   trainN = $('#name-input').val().trim();
   trainDest = $('#destination-input').val().trim();
-  trainF = $('#frequency-input').val().trim();
-  trainArrive = $('#ftt-input').val().trim();
+  trainF = $('#frequency-input').val();
+  trainArrive = $('#ftt-input').val();
 //.ref().push????
-  database.ref().set({
+  database.ref().push({
     trainName: trainN,
     trainDestination: trainDest,
     trainFrequency: trainF,
