@@ -27,36 +27,65 @@ var config = {
   function makeTable() {
     return `
   <tr>
-          <th scope="row">This is a test</th>
-          <td>#########</td>
-          <td>#########</td>
-          <td>#########</td>
-          <td>#########</td>
+          <th scope="row">${trainN}</th>
+          <td>${trainDest}</td>
+          <td>${trainF}</td>
+          <td>${trainArrive}</td>
+          <td>############</td>
   `};
 $(document).on("click", "button", function(){
   event.preventDefault();
-  $('tbody').append(makeTable());
+  
   trainN = $('#name-input').val().trim();
   trainDest = $('#destination-input').val().trim();
   trainF = $('#frequency-input').val().trim();
   trainArrive = $('#ftt-input').val().trim();
 //.ref().push????
-  database.ref().set({
+
+$('tbody').append(makeTable());
+  database.ref().push({
     trainName: trainN,
     trainDestination: trainDest,
     trainFrequency: trainF,
     nextArrival: trainArrive,
+    dateAdded: firebase.database.ServerValue.TIMESTAMP
+
+    
   })
+
+
+
+
 });
 
-// database.on("value", function(snapshot){
+// Real Time Clock
+const clock = document.getElementById('clock');
+
+function updateTime () {
+
+const now = moment();
+const humanReadable = now.format('hh:mm:ssA');
+
+clock.textContent = humanReadable;
+}
+
+setInterval(updateTime, 1000);
+updateTime();
+
+// database.ref().on("value", function(snapshot){
 //   // Logging everything coming out of snapshot
 //   console.log(snapshot.val());
 //   console.log(snapshot.val().TrainN);
 //   console.log(snapshot.val().TrainDest);
 //   console.log(snapshot.val().TrainF);
 //   console.log(snapshot.val().TrainArrive);
-//})
+// })
+  
+
+
+
+
+
 
 
 
