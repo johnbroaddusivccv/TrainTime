@@ -27,20 +27,21 @@ var config = {
   function makeTable() {
     return `
   <tr>
-          <th scope="row">This is a test</th>
-          <td>#########</td>
-          <td>#########</td>
-          <td>#########</td>
-          <td>#########</td>
+          <th scope="row">${trainN}</th>
+          <td>${trainDest}</td>
+          <td>${trainF}</td>
+          <td>${trainArrive}</td>
+          <td>############</td>
   `};
 $(document).on("click", "button", function(){
   event.preventDefault();
-  $('tbody').append(makeTable());
+  
   trainN = $('#name-input').val().trim();
   trainDest = $('#destination-input').val().trim();
   trainF = $('#frequency-input').val();
   trainArrive = $('#ftt-input').val();
 //.ref().push????
+$('tbody').append(makeTable());
   database.ref().push({
     trainName: trainN,
     trainDestination: trainDest,
@@ -48,6 +49,20 @@ $(document).on("click", "button", function(){
     nextArrival: trainArrive,
   })
 });
+
+// Real Time Clock
+const clock = document.getElementById('clock');
+
+function updateTime () {
+
+const now = moment();
+const humanReadable = now.format('hh:mm:ssA');
+
+clock.textContent = humanReadable;
+}
+
+setInterval(updateTime, 1000);
+updateTime();
 
 // database.on("value", function(snapshot){
 //   // Logging everything coming out of snapshot

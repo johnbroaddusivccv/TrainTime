@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Contrail+One');
 h1 {
   font-size: 75px;
   color: whitesmoke;
@@ -28,4 +29,17 @@ header {
 .container {
   background: whitesmoke;
   width: 100%;
+}
+
+
+#clock {
+
+    background-color: black;
+    border-radius: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: red;
+    font-family: 'contrail One', sans-serif;
+    font-size: 3em;
 }
