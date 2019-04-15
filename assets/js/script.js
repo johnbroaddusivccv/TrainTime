@@ -64,7 +64,7 @@ const clock = document.getElementById('clock');
 function updateTime () {
 
 const now = moment();
-const humanReadable = now.format('hh:mm:ssA');
+const humanReadable = now.format('HH:mm:ss A');
 
 clock.textContent = humanReadable;
 }
