@@ -9,30 +9,18 @@ var config = {
   firebase.initializeApp(config);
 
   var database = firebase.database();
-  var trainN = "";
-  var trainDest = ""
-  var trainF = 0;
-  var trainArrive = 0;
-  var trainMinAway = 0;
+
+  var trainN = $('#name-input').val();
+  var trainDest = $('#destination-input').val()
+  var trainF = $('#frequency-input').val()
+  var trainArrive = $('#ftt-input').val();
 
   database.ref().set({
       trainName: trainN,
       trainDestination: trainDest,
       trainFrequency: trainF,
       nextArrival: trainArrive,
-      minutesAway: trainMinAway
   })
-
-  // I need to use moment make an on click function that put info in each of these columns.
-  function makeTable() {
-    return `
-  <tr>
-          <th scope="row">${trainN}</th>
-          <td>${trainDest}</td>
-          <td>${trainF}</td>
-          <td>${trainArrive}</td>
-          <td>############</td>
-  `};
 $(document).on("click", "button", function(){
   event.preventDefault();
   
@@ -52,15 +40,32 @@ $('tbody').append(makeTable());
 
     
   })
-
+database.ref().on("value", function(snapshot){
+  // Logging everything coming out of snapshot
+  console.log(snapshot.val());
+  console.log(snapshot.val().trainName);
+  console.log(snapshot.val().trainDestination);
+  console.log(snapshot.val().trainFrequency);
+  console.log(snapshot.val().nextArrival);
+})
 
 
 
 });
+  // I need to use moment make an on click function that put info in each of these columns.
+  function makeTable() {
+    return `
+  <tr>
+          <th scope="row">${trainN}</th>
+          <td>${trainDest}</td>
+          <td>${trainF}</td>
+          <td>############</td>
+          <td>############</td>
+  `};
+
 
 // Real Time Clock
 const clock = document.getElementById('clock');
-
 function updateTime () {
 
 const now = moment();
@@ -68,18 +73,10 @@ const humanReadable = now.format('HH:mm:ss A');
 
 clock.textContent = humanReadable;
 }
-
 setInterval(updateTime, 1000);
 updateTime();
 
-// database.ref().on("value", function(snapshot){
-//   // Logging everything coming out of snapshot
-//   console.log(snapshot.val());
-//   console.log(snapshot.val().TrainN);
-//   console.log(snapshot.val().TrainDest);
-//   console.log(snapshot.val().TrainF);
-//   console.log(snapshot.val().TrainArrive);
-// })
+
   
 
 
