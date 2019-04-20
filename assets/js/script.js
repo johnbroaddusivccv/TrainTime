@@ -50,14 +50,14 @@ var db = firebase.database();
       var tFirstTrain = cs.firstTrain;
 
       var differenceTimes = moment().diff(moment.unix(tFirstTrain), "minutes");
-      console.log(differenceTimes);
+
       var remainder = moment().diff(moment.unix(tFirstTrain), "minutes") % tFrequency;
-      console.log(remainder);
+
       var tMinutes = tFrequency - remainder;
-      console.log(tMinutes);
+
       // Arrival Time
       var arrivalTime = moment().add(tMinutes, "m").format("HH:mm A");
-      console.log(arrivalTime);
+
 
       var tableRow = $("<tr>").attr("data-key", cs);
 
