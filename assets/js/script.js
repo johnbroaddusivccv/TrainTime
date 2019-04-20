@@ -1,66 +1,78 @@
 var config = {
-    apiKey: "AIzaSyBowPNAAT8vpoKjGJLwm1uytmrrLELFT_M",
-    authDomain: "trainsetto.firebaseapp.com",
-    databaseURL: "https://trainsetto.firebaseio.com",
-    projectId: "trainsetto",
-    storageBucket: "trainsetto.appspot.com",
-    messagingSenderId: "1009756140383"
-  };
-  firebase.initializeApp(config);
+  apiKey: "AIzaSyCDo16xnQQH6KYldB3RS_AjpWR6W0oIFIk",
+  authDomain: "firepracti.firebaseapp.com",
+  databaseURL: "https://firepracti.firebaseio.com",
+  projectId: "firepracti",
+  storageBucket: "firepracti.appspot.com",
+  messagingSenderId: "474512306166"
+};
+firebase.initializeApp(config);
 
-  var database = firebase.database();
-  var trainN = "";
-  var trainDest = ""
-  var trainF = 0;
-  var trainArrive = 0;
-  var trainMinAway = 0;
+var db = firebase.database();
+  $("#add-train").on("click", function() {
+      event.preventDefault();
 
-  database.ref().set({
-      trainName: trainN,
-      trainDestination: trainDest,
-      trainFrequency: trainF,
-      nextArrival: trainArrive,
-      minutesAway: trainMinAway
-  })
-
-  // I need to use moment make an on click function that put info in each of these columns.
-  function makeTable() {
-    return `
-  <tr>
-          <th scope="row">${trainN}</th>
-          <td>${trainDest}</td>
-          <td>${trainF}</td>
-          <td>${trainArrive}</td>
-          <td>############</td>
-  `};
-$(document).on("click", "button", function(){
-  event.preventDefault();
-  
-  trainN = $('#name-input').val().trim();
-  trainDest = $('#destination-input').val().trim();
-  trainF = $('#frequency-input').val().trim();
-  trainArrive = $('#ftt-input').val().trim();
-//.ref().push????
-
-$('tbody').append(makeTable());
-  database.ref().push({
-    trainName: trainN,
-    trainDestination: trainDest,
-    trainFrequency: trainF,
-    nextArrival: trainArrive,
-    dateAdded: firebase.database.ServerValue.TIMESTAMP
-
-    
-  })
+      var name = $("#name-input").val().trim();
+      var destination = $("#destination-input").val().trim();
+      var firstTrainT = moment($("#first-train-input").val().trim(), "HH:mm").subtract(10, "years").format("X");
+      var frequency = $("#frequency-input").val().trim();
 
 
 
+      var trainHolder = {
+      
+      name: name,
+      destination: destination,
+      firstTrain: firstTrainT,
+      frequency: frequency
+      };
 
-});
+      db.ref().push(trainHolder);
+
+      // Clears Input
+
+      $("#name-input").val("");
+      $("#destination-input").val("");
+      $("#first-train-input").val("");
+      $("#frequency-input").val("");
+
+      return false;
+
+
+  });
+
+  db.ref().on("child_added", function(childSnapShot, prevChildKey) {
+      var cs = childSnapShot.val();
+
+      var tName = cs.name;
+      var tDestination = cs.destination;
+      var tFrequency = cs.frequency;
+      var tFirstTrain = cs.firstTrain;
+
+      var differenceTimes = moment().diff(moment.unix(tFirstTrain), "minutes");
+      console.log(differenceTimes);
+      var remainder = moment().diff(moment.unix(tFirstTrain), "minutes") % tFrequency;
+      console.log(remainder);
+      var tMinutes = tFrequency - remainder;
+      console.log(tMinutes);
+      // Arrival Time
+      var arrivalTime = moment().add(tMinutes, "m").format("HH:mm A");
+      console.log(arrivalTime);
+
+      var tableRow = $("<tr>").attr("data-key", cs);
+
+      $("<td>").text(tName).appendTo(tableRow);
+      $("<td>").text(tDestination).appendTo(tableRow);
+      $("<td>").text(tFrequency).appendTo(tableRow);
+      $("<td>").text(arrivalTime).appendTo(tableRow);
+      $("<td>").text(tMinutes).appendTo(tableRow);
+      $("#trains").append(tableRow);
+
+
+  });
 
 // Real Time Clock
 const clock = document.getElementById('clock');
-
 function updateTime () {
 
 const now = moment();
@@ -68,18 +80,10 @@ const humanReadable = now.format('HH:mm:ss A');
 
 clock.textContent = humanReadable;
 }
-
 setInterval(updateTime, 1000);
 updateTime();
 
-// database.ref().on("value", function(snapshot){
-//   // Logging everything coming out of snapshot
-//   console.log(snapshot.val());
-//   console.log(snapshot.val().TrainN);
-//   console.log(snapshot.val().TrainDest);
-//   console.log(snapshot.val().TrainF);
-//   console.log(snapshot.val().TrainArrive);
-// })
+
   
 
 
