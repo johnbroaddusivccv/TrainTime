@@ -1,76 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<html>
+<head>
     <!-- My style -->
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <!-- reset -->
-    <link rel="stylesheet" href="assets/css/reset.css" />
-    <!-- bootStrap -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Jquery -->
     <script
-      src="https://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"
-    ></script>
-    <!-- FireBase -->
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    <!-- Firebase  -->
     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
-    <!-- Moment.js -->
+    <!-- Moment.JS -->
     <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
-    <title>Train Time Sheet</title>
-  </head>
-  <body>
-    <header><h1>Train Time Sheet</h1></header>
-    <h3 id="clock"></h3>
-    <div class="container" ><table class="table" id="theTrains">
-      <thead>
-        <tr>
-          <th scope="col">Train name</th>
-          <th scope="col">Destination</th>
-          <th scope="col">Frequency (min)</th>
-          <th scope="col">Next Arrival</th>
-          <th scope="col">Minutes Away</th>
-        </tr>
-      </thead>
-      <tbody>
+    <title>FireBase Practice</title>
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
 
-      </tbody>
-    </table>
-            </div>
-            <div class="container"><form>
-             
-              <div class="form-group">
-                <label for="inputAddress"><h6>Train Name</h6></label>
-                <input type="text" class="form-control" id="name-input" placeholder="Train Name">
-              </div>
-              <div class="form-group">
-                <label for="inputAddress2"><h6>Destination</h6></label>
-                <input type="text" class="form-control" id="destination-input" placeholder="Destination">
-              </div>
-              <div class="form-group">
-                <label for="inputAddress"><h6>First Train Time (HH:mm) Miliatry Time</h6></label>
-                <input type="text" class="form-control" id="ftt-input" placeholder="First Train Time">
-              </div>
-              <div class="form-group">
-                <label for="inputAddress2"><h>Frequency</h6></label>
-                <input type="text" class="form-control" id="frequency-input" placeholder="Frequency">
-              </div>
-              <div class="form-group col-md-2"><button type="submit" class="btn btn-primary">Submit</button>
+<div class="container">
 
-                
-                </div>
-              </div>
-              
-            </form></div>
+  <div class="jumbotron">
+  	<h1 class="text-center">Train Time</h1>
+    <h2 class="text-center"></h2>
+  </div>
 
-    <script src="assets/js/script.js"></script>
-  </body>
-</html>
+<div class="panel  panel-success">
+ <h3>Train Schedule</h3>
+  <div id="clock"></div>
+  <table class="table table-striped" id="trains">
+    <tr id="train-info">
+	   <th>Train Name</th>
+	   <th>Destination</th>
+	   <th>Frequency (min)</th>
+	   <th>Next Arrival</th>
+	   <th>Minutes Away</th>
+    </tr>
+  </table>
+
+</div>
+
+<div class="panel panel-info panel-danger">
+  <div class="panel-heading">Add Train</div>
+
+<form>
+    <label for="name">Train Name</label>
+    <input type="name" class="form-control" id="name-input" placeholder="Name">
+
+  <div class="form-group">
+    <label for="destination">Destination</label>
+    <input type="destination" class="form-control" id="destination-input" placeholder="Destination">
+  </div>
+  <div class="form-group">
+    <label for="first train time">First Train Time </label>
+    <input type="first train" class="form-control" id="first-train-input" placeholder="(HH:mm - military time">
+  </div>
+  <div class="form-group">
+    <label for="frequency">Frequency (min)</label>
+    <input type="frequency" class="form-control" id="frequency-input" placeholder="Frequency">
+  </div>
+  <button type="submit" class="btn btn-danger" id="add-train">Submit</button>
+</form>
+
+</div>
+
+<script src="assets/js/script.js"></script>
+</div>
+
+</body>

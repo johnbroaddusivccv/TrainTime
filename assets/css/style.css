@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Contrail+One');
 h1 {
   font-size: 75px;
-  color: whitesmoke;
+  color:black;
   text-align: center;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   margin: 0%;
@@ -14,11 +14,11 @@ h3 {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   margin: 0%;
-  padding-left: 60px;
 }
 
 body {
   background: url("../images/mosaic.png");
+  color: whitesmoke;
 }
 
 header {
@@ -27,7 +27,7 @@ header {
 }
 
 .container {
-  background: whitesmoke;
+  background: black;
   width: 100%;
 }
 
@@ -42,4 +42,8 @@ header {
     color: red;
     font-family: 'contrail One', sans-serif;
     font-size: 3em;
+}
+
+td, th {
+  color:whitesmoke;
 }
