@@ -1,1 +1,8 @@
-This App will calculate the time a train will arrive in real time.  Using Moment.js to manipulate real time and firebase to store data this project would be a good fork for someone who is just getting into using firebase or moment.js.  It was my first time using it and I found it to be really frustrating storing data and using moment correctly. all code is working as it should as far as I know. Any input is valued.
+Train Scheduling Application
+=======
+
+Using HTML5, CSS3, BootStrap, JavaScript with Moment.js & FireBase as the Database.
+--------
+***
+> This application will calculate when a train will arrive when you Input the trains name and the time. Data is saved in a public Database.
+***
